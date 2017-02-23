@@ -1,0 +1,27 @@
+{
+    "name": "phlak/lifx-client",
+    "description": "PHP client library for the LIFX API (v1)",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Kankiewicz",
+            "email": "Chris@ChrisKankiewicz.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/PHLAK/lifx-client/issues"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4",
+        "guzzlehttp/guzzle-services": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "LIFX\\": "src/"
+        }
+    }
+}

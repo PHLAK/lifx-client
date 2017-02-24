@@ -1,6 +1,6 @@
 <?php
 
-class LIFXClientTest extends PHPUnit_Framework_TestCase
+class ClientTest extends PHPUnit_Framework_TestCase
 {
     protected $lifx;
 

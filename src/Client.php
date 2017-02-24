@@ -21,14 +21,14 @@ class Client
      * @param string  $appToken  LIFX OAuth2 access token. You can generate your
      *                           own token at https://cloud.lifx.com/settings
      */
-    public function __construct($appToken)
+    public function __construct($appToken, $options = [])
     {
-        $this->client = new GuzzleClient([
+        $this->client = new GuzzleClient(array_merge_recursive([
             'base_uri' => self::BASE_URI . '/' . self::API_VERSION . '/',
             'headers' => [
                 'Authorization' => 'Bearer ' . $appToken
             ]
-        ]);
+        ], $options));
     }
 
     /**

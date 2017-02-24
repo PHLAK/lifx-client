@@ -115,6 +115,22 @@ Validate a color string:
 $lifx->validateColor($string);
 ```
 
+Handling Exceptions
+-------------------
+
+```php
+use GuzzleHttp\Exception\ClientException;
+
+try {
+    $lifx->togglePower('id:123456789abcd');
+} catch (ClientException $exception) {
+    // Handle this exception here...
+}
+```
+
+See the [GuzzleHttp exceptions](http://docs.guzzlephp.org/en/latest/quickstart.html#exceptions)
+documentation for more details.
+
 Troubleshooting
 ---------------
 

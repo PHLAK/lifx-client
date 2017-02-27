@@ -104,7 +104,11 @@ class Client
      */
     public function togglePower($selector, $duration = 1)
     {
-        $response = $this->client->post('lights/' . $selector . '/toggle');
+        $response = $this->client->post('lights/' . $selector . '/toggle', [
+            'json' => [
+                'duration' => $duration
+            ]
+        ]);
 
         return json_decode($response->getBody());
     }

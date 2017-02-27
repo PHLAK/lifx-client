@@ -35,7 +35,7 @@ class Client
      * List one or more lights via a selector
      *
      * @param  string  $selector  The selector to limit which light information
-     *                            is returned
+     *                            is returned (deafult: all)
      *
      * @return array  Array of decoded JSON objects
      */
@@ -54,12 +54,11 @@ class Client
      * @param  array  $params  Array of one or more parameters:
      *                         - power (string): 'on' or 'off'
      *                         - color (string): The color to set the light to
-     *                         - brightness (float): 0.0 - 1.0
+     *                         - brightness (float): Brightness [0.0 - 1.0]
      *                         - duration (float): Time in seconds the power
-     *                           action will take. From 0 – 3155760000 (default:
-     *                           1.0)
+     *                           action will take [0 - 3155760000] (default: 1.0)
      *                         - infrared (float): The brightness of the
-     *                           infrared channel. 0.0 - 1.0
+     *                           infrared channel [0.0 - 1.0]
      *
      * @return array  Array of decoded JSON objects
      */
@@ -75,10 +74,10 @@ class Client
     /**
      * Set multiple states across multiple selectors
      *
-     * @param  array  $states  Array of state hashes as per Set State. No more
-     *                         than 50 entries.
-     * @param  array  $defaults  Default values to use when not specified in
-     *                           each states[] object.
+     * @param  array  $states  Array of state hashes as per Set State (no more
+     *                         than 50 entries)
+     * @param  array  $defaults  Optional array of default values to use when
+     *                           not specified in each states[] object
      *
      * @return object  Decoded JSON object
      */
@@ -98,7 +97,8 @@ class Client
      * Toggle the power of one or more lights via a selector
      *
      * @param  string  $selector  The selector to limit which lights are toggled
-     * @param  string  $duration  Time in seconds to spend perfoming the toggle
+     * @param  int  $duration  Time in seconds to spend perfoming the toggle
+     *                         (default: 1)
      *
      * @return object  Decoded JSON object
      */
@@ -132,7 +132,7 @@ class Client
      *                         - power_on (bool): If true, turn the bulb on
      *                           if it is not already on (default: true)
      *                         - peak (float): Where in a period the color is at
-     *                           its maximum. From 0.0 - 1.0 (default: 0.5)
+     *                           its maximum [0.0 - 1.0] (default: 0.5)
      *
      * @return object  Decoded JSON object
      */
@@ -183,14 +183,14 @@ class Client
      * Make the light(s) cycle to the next or previous state in a list of states
      *
      * @param  string  $selector  Selector to limit which lights are controlled
-     * @param  array  $states  Array of state hashes as per Set State. Must have
-     *                         2 to 5 entries
+     * @param  array  $states  Array of state hashes as per Set State (requires
+     *                         2 to 5 entries)
      * @param  array  $params  Array of optional parameters:
      *                         - defaults (array): Default values to use when
      *                           not specified in each states[] object
      *                         - direction (string): Direction in which to cycle
-     *                           through the list. Can be 'forward' or
-     *                           'backward' (default: forward)
+     *                           through the list. Can be 'forward' or 'backward'
+     *                           (default: forward)
      *
      * @return object  Decoded JSON object
      */
@@ -222,7 +222,7 @@ class Client
      *
      * @param  string  $sceneUuid  The UUID for the scene you wish to activate
      * @param  float  $duration  The time in seconds to spend performing the
-     *                           scene transition.
+     *                           scene transition (default: 1.0)
      *
      * @return object  Decoded JSON object
      */
@@ -238,7 +238,7 @@ class Client
     /**
      * Validate a color string
      *
-     * @param  string  $color  Color string you'd like to validate
+     * @param  string  $color  Color string to validate
      *
      * @return object  Decoded JSON object
      */

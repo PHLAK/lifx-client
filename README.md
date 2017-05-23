@@ -131,6 +131,11 @@ try {
 See the [GuzzleHttp exceptions](http://docs.guzzlephp.org/en/latest/quickstart.html#exceptions)
 documentation for more details.
 
+Changelog
+---------
+
+A list of changes can be found on the [GitHub Releases](https://github.com/PHLAK/lifx-client/releases) page.
+
 Troubleshooting
 ---------------
 

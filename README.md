@@ -10,6 +10,7 @@ LIFX Client
 [![Author](https://img.shields.io/badge/author-Chris%20Kankiewicz-blue.svg)](https://www.ChrisKankiewicz.com)
 [![License](https://img.shields.io/packagist/l/PHLAK/lifx-client.svg)](https://packagist.org/packages/PHLAK/lifx-client)
 [![Build Status](https://img.shields.io/travis/PHLAK/lifx-client.svg)](https://travis-ci.org/PHLAK/lifx-client)
+[![StyleCI](https://styleci.io/repos/82958655/shield?branch=master)](https://styleci.io/repos/82958655)
 
 PHP client library for the LIFX API (v1) -- by, [Chris Kankiewicz](https://www.ChrisKankiewicz.com)
 

@@ -12,14 +12,14 @@ class Client
     /** @const API_VERSION LIFX API version */
     const API_VERSION = 'v1';
 
-    /** @var object Instance of GuzzleHttp\Client object*/
+    /** @var object Instance of GuzzleHttp\Client object */
     protected $client;
 
     /**
-     * LIFX\Client constructor method, runs on object creation
+     * LIFX\Client constructor method, runs on object creation.
      *
-     * @param string  $appToken  LIFX OAuth2 access token. You can generate your
-     *                           own token at https://cloud.lifx.com/settings
+     * @param string $appToken LIFX OAuth2 access token. You can generate your
+     *                         own token at https://cloud.lifx.com/settings
      */
     public function __construct($appToken, $options = [])
     {
@@ -32,12 +32,12 @@ class Client
     }
 
     /**
-     * List one or more lights via a selector
+     * List one or more lights via a selector.
      *
-     * @param  string  $selector  The selector to limit which light information
-     *                            is returned (deafult: all)
+     * @param string $selector The selector to limit which light information is
+     *                         returned (default: all)
      *
-     * @return array  Array of decoded JSON objects
+     * @return array Array of decoded JSON objects
      */
     public function listLights($selector = 'all')
     {
@@ -47,20 +47,20 @@ class Client
     }
 
     /**
-     * Set the state of one or more lights via a selector
+     * Set the state of one or more lights via a selector.
      *
-     * @param  string  $selector  The selector to limit which lights are
-     *                            controlled
-     * @param  array  $params  Array of one or more parameters:
+     * @param string $selector The selector to limit which lights are
+     *                         controlled
+     * @param array  $params   Array of one or more parameters:
      *                         - power (string): 'on' or 'off'
      *                         - color (string): The color to set the light to
      *                         - brightness (float): Brightness [0.0 - 1.0]
      *                         - duration (float): Time in seconds the power
-     *                           action will take [0 - 3155760000] (default: 1.0)
+     *                         action will take [0 - 3155760000] (default: 1.0)
      *                         - infrared (float): The brightness of the
-     *                           infrared channel [0.0 - 1.0]
+     *                         infrared channel [0.0 - 1.0]
      *
-     * @return array  Array of decoded JSON objects
+     * @return array Array of decoded JSON objects
      */
     public function setState($selector, array $params)
     {
@@ -72,14 +72,14 @@ class Client
     }
 
     /**
-     * Set multiple states across multiple selectors
+     * Set multiple states across multiple selectors.
      *
-     * @param  array  $states  Array of state hashes as per Set State (no more
-     *                         than 50 entries)
-     * @param  array  $defaults  Optional array of default values to use when
-     *                           not specified in each states[] object
+     * @param array $states   Array of state hashes as per Set State (no more
+     *                        than 50 entries)
+     * @param array $defaults Optional array of default values to use when not
+     *                        specified in each states[] object
      *
-     * @return object  Decoded JSON object
+     * @return object Decoded JSON object
      */
     public function setStates(array $states, array $defaults = [])
     {
@@ -94,13 +94,13 @@ class Client
     }
 
     /**
-     * Toggle the power of one or more lights via a selector
+     * Toggle the power of one or more lights via a selector.
      *
-     * @param  string  $selector  The selector to limit which lights are toggled
-     * @param  int  $duration  Time in seconds to spend perfoming the toggle
+     * @param string $selector The selector to limit which lights are toggled
+     * @param int    $duration Time in seconds to spend performing the toggle
      *                         (default: 1)
      *
-     * @return object  Decoded JSON object
+     * @return object Decoded JSON object
      */
     public function togglePower($selector, $duration = 1)
     {
@@ -114,27 +114,27 @@ class Client
     }
 
     /**
-     * Cause one or more lights to breathe via a selector
+     * Cause one or more lights to breathe via a selector.
      *
-     * @param  string  $selector  The selector to limit which lights will run
-     *                            the effect
-     * @param  string  $color  The color to use for the breathe effect
-     * @param  array  $params  Array of optional parameters:
+     * @param string $selector The selector to limit which lights will run
+     *                         the effect
+     * @param string $color    The color to use for the breathe effect
+     * @param array  $params   Array of optional parameters:
      *                         - from_color (string): The color to start the
-     *                           effect from (default: current bulb color)
-     *                         - period (float): Time in seconds for one cyle of
-     *                           the effect (default: 1.0)
+     *                         effect from (default: current bulb color)
+     *                         - period (float): Time in seconds for one cycle
+     *                         of the effect (default: 1.0)
      *                         - cycles (float): Number of times to repeat the
-     *                           effect (default: 1.0)
+     *                         effect (default: 1.0)
      *                         - persist (bool): If false set the light back to
-     *                           its previous value when effect ends, if true
-     *                           leave the last effect color (default: false)
+     *                         its previous value when effect ends, if true
+     *                         leave the last effect color (default: false)
      *                         - power_on (bool): If true, turn the bulb on
-     *                           if it is not already on (default: true)
+     *                         if it is not already on (default: true)
      *                         - peak (float): Where in a period the color is at
-     *                           its maximum [0.0 - 1.0] (default: 0.5)
+     *                         its maximum [0.0 - 1.0] (default: 0.5)
      *
-     * @return object  Decoded JSON object
+     * @return object Decoded JSON object
      */
     public function breatheEffect($selector, $color, array $params = [])
     {
@@ -148,25 +148,25 @@ class Client
     }
 
     /**
-     * Cause one or more lights to pulse via a selector
+     * Cause one or more lights to pulse via a selector.
      *
-     * @param  string  $selector  The selector to limit which lights will run
-     *                            the effect
-     * @param  string  $color  The color to use for the pulse effect
-     * @param  array  $params  Array of optional parameters:
+     * @param string $selector The selector to limit which lights will run
+     *                         the effect
+     * @param string $color    The color to use for the pulse effect
+     * @param array  $params   Array of optional parameters:
      *                         - from_color (string): The color to start the
-     *                           effect from (default: current bulb color)
-     *                         - period (float): Time in seconds for one cyle of
-     *                           the effect (default: 1.0)
+     *                         effect from (default: current bulb color)
+     *                         - period (float): Time in seconds for one cycle
+     *                         of the effect (default: 1.0)
      *                         - cycles (float): Number of times to repeat the
-     *                           effect (default: 1.0)
+     *                         effect (default: 1.0)
      *                         - persist (bool): If false set the light back to
-     *                           its previous value when effect ends, if true
-     *                           leave the last effect color (default: false)
+     *                         its previous value when effect ends, if true
+     *                         leave the last effect color (default: false)
      *                         - power_on (bool): If true, turn the bulb on
-     *                           if it is not already on (default: true)
+     *                         if it is not already on (default: true)
      *
-     * @return object  Decoded JSON object
+     * @return object Decoded JSON object
      */
     public function pulseEffect($selector, $color, array $params = [])
     {
@@ -180,19 +180,19 @@ class Client
     }
 
     /**
-     * Make the light(s) cycle to the next or previous state in a list of states
+     * Make the light(s) cycle to the next or previous state in a list of states.
      *
-     * @param  string  $selector  Selector to limit which lights are controlled
-     * @param  array  $states  Array of state hashes as per Set State (requires
+     * @param string $selector Selector to limit which lights are controlled
+     * @param array  $states   Array of state hashes as per Set State (requires
      *                         2 to 5 entries)
-     * @param  array  $params  Array of optional parameters:
+     * @param array  $params   Array of optional parameters:
      *                         - defaults (array): Default values to use when
-     *                           not specified in each states[] object
+     *                         not specified in each states[] object
      *                         - direction (string): Direction in which to cycle
-     *                           through the list. Can be 'forward' or 'backward'
-     *                           (default: forward)
+     *                         through the list. Can be 'forward' or 'backward'
+     *                         (default: forward)
      *
-     * @return object  Decoded JSON object
+     * @return object Decoded JSON object
      */
     public function cycle($selector, array $states, array $params = [])
     {
@@ -206,9 +206,9 @@ class Client
     }
 
     /**
-     * Get a list of available scenes
+     * Get a list of available scenes.
      *
-     * @return object  Decoded JSON object
+     * @return object Decoded JSON object
      */
     public function listScenes()
     {
@@ -218,13 +218,13 @@ class Client
     }
 
     /**
-     * Activate a scene
+     * Activate a scene.
      *
-     * @param  string  $sceneUuid  The UUID for the scene you wish to activate
-     * @param  float  $duration  The time in seconds to spend performing the
-     *                           scene transition (default: 1.0)
+     * @param string $sceneUuid The UUID for the scene you wish to activate
+     * @param float  $duration  The time in seconds to spend performing the
+     *                          scene transition (default: 1.0)
      *
-     * @return object  Decoded JSON object
+     * @return object Decoded JSON object
      */
     public function activateScene($sceneUuid, $duration = 1.0)
     {
@@ -236,11 +236,11 @@ class Client
     }
 
     /**
-     * Validate a color string
+     * Validate a color string.
      *
-     * @param  string  $color  Color string to validate
+     * @param string $color Color string to validate
      *
-     * @return object  Decoded JSON object
+     * @return object Decoded JSON object
      */
     public function validateColor($string)
     {

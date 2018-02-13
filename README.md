@@ -12,7 +12,7 @@ LIFX Client
 [![Build Status](https://img.shields.io/travis/PHLAK/lifx-client.svg)](https://travis-ci.org/PHLAK/lifx-client)
 [![StyleCI](https://styleci.io/repos/82958655/shield?branch=master)](https://styleci.io/repos/82958655)
 
-PHP client library for the LIFX API (v1) -- by, [Chris Kankiewicz](https://www.ChrisKankiewicz.com)
+PHP client library for the LIFX API (v1) -- by, [Chris Kankiewicz](https://www.ChrisKankiewicz.com) ([@PHLAK](https://twitter.com/PHLAK))
 
 Refer to the full [LIFX API documentation](https://api.developer.lifx.com)
 for more information about each method and it's available parameters.

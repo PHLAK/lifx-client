@@ -1,6 +1,9 @@
 <?php
 
-class ClientTest extends PHPUnit_Framework_TestCase
+use PHLAK\LIFX;
+use PHPUnit\Framework\TestCase;
+
+class ClientTest extends TestCase
 {
     protected $lifx;
 
@@ -11,6 +14,6 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function test_is_instance_of_lifx_client_object()
     {
-        $this->assertInstanceOf('LIFX\Client', $this->lifx);
+        $this->assertInstanceOf(LIFX\Client::class, $this->lifx);
     }
 }

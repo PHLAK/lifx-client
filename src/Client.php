@@ -1,6 +1,6 @@
 <?php
 
-namespace LIFX;
+namespace PHLAK\LIFX;
 
 use GuzzleHttp\Client as GuzzleClient;
 

@@ -1,12 +1,14 @@
 <?php
 
+use PHLAK\LIFX;
+use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Exception\RequestException;
 
-class ResoponseTest extends PHPUnit_Framework_TestCase
+class ResoponseTest extends TestCase
 {
     protected $lifx;
 
@@ -28,7 +30,7 @@ class ResoponseTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->lifx->listLights()->response);
         $this->assertNull($this->lifx->listLights());
 
-        $this->setExpectedException('GuzzleHttp\Exception\RequestException');
+        $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->listLights();
     }
 
@@ -37,7 +39,7 @@ class ResoponseTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->lifx->setState('id:123456789', ['power' => 'on'])->response);
         $this->assertNull($this->lifx->setState('id:123456789', ['power' => 'on']));
 
-        $this->setExpectedException('GuzzleHttp\Exception\RequestException');
+        $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->setState('id:123456789', ['power' => 'on']);
     }
 
@@ -53,7 +55,7 @@ class ResoponseTest extends PHPUnit_Framework_TestCase
             ['selector' => 'id:987654321', 'power' => 'on']
         ]);
 
-        $this->setExpectedException('GuzzleHttp\Exception\RequestException');
+        $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->setStates([
             ['selector' => 'id:123456789', 'power' => 'on'],
             ['selector' => 'id:987654321', 'power' => 'on']
@@ -65,7 +67,7 @@ class ResoponseTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->lifx->togglePower('id:123456789')->response);
         $this->assertNull($this->lifx->togglePower('id:123456789'));
 
-        $this->setExpectedException('GuzzleHttp\Exception\RequestException');
+        $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->togglePower('id:123456789');
     }
 
@@ -74,7 +76,7 @@ class ResoponseTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->lifx->breatheEffect('id:123456789', 'purple')->response);
         $this->assertNull($this->lifx->breatheEffect('id:123456789', 'purple'));
 
-        $this->setExpectedException('GuzzleHttp\Exception\RequestException');
+        $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->breatheEffect('id:123456789', 'purple');
     }
 
@@ -83,7 +85,7 @@ class ResoponseTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->lifx->pulseEffect('id:123456789', 'purple')->response);
         $this->assertNull($this->lifx->pulseEffect('id:123456789', 'purple'));
 
-        $this->setExpectedException('GuzzleHttp\Exception\RequestException');
+        $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->pulseEffect('id:123456789', 'purple');
     }
 
@@ -99,7 +101,7 @@ class ResoponseTest extends PHPUnit_Framework_TestCase
             ['power' => 'off']
         ]));
 
-        $this->setExpectedException('GuzzleHttp\Exception\RequestException');
+        $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->cycle('id:123456789', [
             ['power' => 'on'],
             ['power' => 'off']
@@ -111,7 +113,7 @@ class ResoponseTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->lifx->listScenes()->response);
         $this->assertNull($this->lifx->listScenes());
 
-        $this->setExpectedException('GuzzleHttp\Exception\RequestException');
+        $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->listScenes();
     }
 
@@ -120,7 +122,7 @@ class ResoponseTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->lifx->activateScene('55a0db9d-3ea7-4973-9b15-b149215bd4db')->response);
         $this->assertNull($this->lifx->activateScene('55a0db9d-3ea7-4973-9b15-b149215bd4db'));
 
-        $this->setExpectedException('GuzzleHttp\Exception\RequestException');
+        $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->activateScene('55a0db9d-3ea7-4973-9b15-b149215bd4db');
     }
 
@@ -129,7 +131,7 @@ class ResoponseTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->lifx->validateColor('purple')->response);
         $this->assertNull($this->lifx->validateColor('purple'));
 
-        $this->setExpectedException('GuzzleHttp\Exception\RequestException');
+        $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->validateColor('purple');
     }
 }

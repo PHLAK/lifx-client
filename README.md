@@ -46,7 +46,7 @@ Initializing the Client
 First, import LIFX:
 
 ```php
-use LIFX;
+use PHLAK\LIFX;
 ```
 
 Then instantiate the class with your LIFX OAuth 2 access token. You can generate

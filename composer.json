@@ -12,7 +12,6 @@
     "support": {
         "issues": "https://github.com/PHLAK/lifx-client/issues"
     },
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.6",
         "guzzlehttp/guzzle": "^6.2"
@@ -26,5 +25,9 @@
         "psr-4": {
             "PHLAK\\LIFX\\": "src/"
         }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
     }
 }

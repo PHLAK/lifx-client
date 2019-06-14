@@ -1,6 +1,6 @@
 <?php
 
-use PHLAK\LIFX;
+use PHLAK\LIFX\Client;
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -12,7 +12,7 @@ class ResoponseTest extends TestCase
 {
     protected $lifx;
 
-    public function setUp()
+    protected function setUp()
     {
         $mock = new MockHandler([
             new Response(200, [], '{"response": true}'),
@@ -20,7 +20,7 @@ class ResoponseTest extends TestCase
             new RequestException('Error Communicating with Server', new Request('GET', 'test'))
         ]);
 
-        $this->lifx = new LIFX\Client('NOT_A_REAL_APP_TOKEN', [
+        $this->lifx = new Client('NOT_A_REAL_APP_TOKEN', [
             'handler' => HandlerStack::create($mock)
         ]);
     }
@@ -30,7 +30,9 @@ class ResoponseTest extends TestCase
         $this->assertTrue($this->lifx->listLights()->response);
         $this->assertNull($this->lifx->listLights());
 
-        $this->expectException('GuzzleHttp\Exception\RequestException');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('Error Communicating with Server');
+
         $this->lifx->listLights();
     }
 
@@ -39,7 +41,9 @@ class ResoponseTest extends TestCase
         $this->assertTrue($this->lifx->setState('id:123456789', ['power' => 'on'])->response);
         $this->assertNull($this->lifx->setState('id:123456789', ['power' => 'on']));
 
-        $this->expectException('GuzzleHttp\Exception\RequestException');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('Error Communicating with Server');
+
         $this->lifx->setState('id:123456789', ['power' => 'on']);
     }
 
@@ -55,7 +59,9 @@ class ResoponseTest extends TestCase
             ['selector' => 'id:987654321', 'power' => 'on']
         ]);
 
-        $this->expectException('GuzzleHttp\Exception\RequestException');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('Error Communicating with Server');
+
         $this->lifx->setStates([
             ['selector' => 'id:123456789', 'power' => 'on'],
             ['selector' => 'id:987654321', 'power' => 'on']
@@ -67,7 +73,9 @@ class ResoponseTest extends TestCase
         $this->assertTrue($this->lifx->togglePower('id:123456789')->response);
         $this->assertNull($this->lifx->togglePower('id:123456789'));
 
-        $this->expectException('GuzzleHttp\Exception\RequestException');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('Error Communicating with Server');
+
         $this->lifx->togglePower('id:123456789');
     }
 
@@ -76,7 +84,9 @@ class ResoponseTest extends TestCase
         $this->assertTrue($this->lifx->breatheEffect('id:123456789', 'purple')->response);
         $this->assertNull($this->lifx->breatheEffect('id:123456789', 'purple'));
 
-        $this->expectException('GuzzleHttp\Exception\RequestException');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('Error Communicating with Server');
+
         $this->lifx->breatheEffect('id:123456789', 'purple');
     }
 
@@ -85,7 +95,9 @@ class ResoponseTest extends TestCase
         $this->assertTrue($this->lifx->pulseEffect('id:123456789', 'purple')->response);
         $this->assertNull($this->lifx->pulseEffect('id:123456789', 'purple'));
 
-        $this->expectException('GuzzleHttp\Exception\RequestException');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('Error Communicating with Server');
+
         $this->lifx->pulseEffect('id:123456789', 'purple');
     }
 
@@ -101,7 +113,9 @@ class ResoponseTest extends TestCase
             ['power' => 'off']
         ]));
 
-        $this->expectException('GuzzleHttp\Exception\RequestException');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('Error Communicating with Server');
+
         $this->lifx->cycle('id:123456789', [
             ['power' => 'on'],
             ['power' => 'off']
@@ -113,7 +127,9 @@ class ResoponseTest extends TestCase
         $this->assertTrue($this->lifx->listScenes()->response);
         $this->assertNull($this->lifx->listScenes());
 
-        $this->expectException('GuzzleHttp\Exception\RequestException');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('Error Communicating with Server');
+
         $this->lifx->listScenes();
     }
 
@@ -122,7 +138,9 @@ class ResoponseTest extends TestCase
         $this->assertTrue($this->lifx->activateScene('55a0db9d-3ea7-4973-9b15-b149215bd4db')->response);
         $this->assertNull($this->lifx->activateScene('55a0db9d-3ea7-4973-9b15-b149215bd4db'));
 
-        $this->expectException('GuzzleHttp\Exception\RequestException');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('Error Communicating with Server');
+
         $this->lifx->activateScene('55a0db9d-3ea7-4973-9b15-b149215bd4db');
     }
 
@@ -131,7 +149,9 @@ class ResoponseTest extends TestCase
         $this->assertTrue($this->lifx->validateColor('purple')->response);
         $this->assertNull($this->lifx->validateColor('purple'));
 
-        $this->expectException('GuzzleHttp\Exception\RequestException');
+        $this->expectException(RequestException::class);
+        $this->expectExceptionMessage('Error Communicating with Server');
+
         $this->lifx->validateColor('purple');
     }
 }

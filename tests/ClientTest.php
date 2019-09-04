@@ -7,7 +7,7 @@ class ClientTest extends TestCase
 {
     protected $lifx;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->lifx = new LIFX\Client('NOT_A_REAL_APP_TOKEN');
     }

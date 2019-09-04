@@ -12,7 +12,7 @@ class ResoponseTest extends TestCase
 {
     protected $lifx;
 
-    public function setUp()
+    public function setUp(): void
     {
         $mock = new MockHandler([
             new Response(200, [], '{"response": true}'),

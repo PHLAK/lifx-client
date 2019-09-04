@@ -31,7 +31,7 @@ LIFX Client is a LIFX API client library for PHP built with GuzzleHttp.
 Requirements
 ------------
 
-  - [PHP](https://php.net) >= 7.0
+  - [PHP](https://php.net) >= 7.1
 
 Install with Composer
 ---------------------

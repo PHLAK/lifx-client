@@ -1,32 +1,32 @@
-LIFX Client
-===========
+<p align="center">
+  <img src="lifx-php.png" alt="LIFX Client" width="500">
+</p>
 
-![LIFX](lifx-php.png)
+<p align="center">
+  <a href="https://packagist.org/packages/PHLAK/lifx-client"><img src="https://img.shields.io/packagist/v/PHLAK/lifx-client.svg" alt="Latest Stable Version"></a>
+  <a href="https://packagist.org/packages/PHLAK/lifx-client"><img src="https://img.shields.io/packagist/dt/PHLAK/lifx-client.svg" alt="Total Downloads"></a>
+  <a href="https://packagist.org/packages/PHLAK/lifx-client"><img src="https://img.shields.io/packagist/l/PHLAK/lifx-client.svg" alt="License"></a>
+  <a href="https://travis-ci.org/PHLAK/lifx-client"><img src="https://img.shields.io/travis/PHLAK/lifx-client.svg" alt="Build Status"></a>
+  <a href="https://styleci.io/repos/82958655"><img src="https://styleci.io/repos/82958655/shield?branch=master&style=flat" alt="StyleCI"></a>
+  <br>
+  <a href="https://join.slack.com/t/phlaknet/shared_invite/enQtNzk0ODkwMDA2MDg0LWI4NDAyZGRlMWEyMWNhZmJmZjgzM2Y2YTdhNmZlYzc3OGNjZWU5MDNkMTcwMWQ5OGI5ODFmMjI5OWVkZTliN2M"><img src="https://img.shields.io/badge/Join_our-Slack-611f69.svg" alt="Join our"></a>
+  <a href="https://github.com/users/PHLAK/sponsorship"><img src="https://img.shields.io/badge/Become_a-Sponsor-cc4195.svg" alt="Become a Sponsor"></a>
+  <a href="https://patreon.com/PHLAK"><img src="https://img.shields.io/badge/Become_a-Patron-e7513b.svg" alt="Become a Patron"></a>
+  <a href="https://paypal.me/ChrisKankiewicz"><img src="https://img.shields.io/badge/Make_a-Donation-006bb6.svg" alt="One-time Donation"></a>
+</p>
 
------
-
-[![Latest Stable Version](https://img.shields.io/packagist/v/PHLAK/lifx-client.svg)](https://packagist.org/packages/PHLAK/lifx-client)
-[![Total Downloads](https://img.shields.io/packagist/dt/PHLAK/lifx-client.svg)](https://packagist.org/packages/PHLAK/lifx-client)
-[![Author](https://img.shields.io/badge/author-Chris%20Kankiewicz-blue.svg)](https://www.ChrisKankiewicz.com)
-[![License](https://img.shields.io/packagist/l/PHLAK/lifx-client.svg)](https://packagist.org/packages/PHLAK/lifx-client)
-[![Build Status](https://img.shields.io/travis/PHLAK/lifx-client.svg)](https://travis-ci.org/PHLAK/lifx-client)
-[![StyleCI](https://styleci.io/repos/82958655/shield?branch=master)](https://styleci.io/repos/82958655)
-
-PHP client library for the LIFX API (v1) -- by, [Chris Kankiewicz](https://www.ChrisKankiewicz.com) ([@PHLAK](https://twitter.com/PHLAK))
-
-Refer to the full [LIFX API documentation](https://api.developer.lifx.com)
-for more information about each method and it's available parameters.
+<p align="center">
+   PHP client library for the LIFX API (v1) -- by,
+   <a href="https://www.ChrisKankiewicz.com">Chris Kankiewicz</a> (<a href="https://twitter.com/PHLAK">@PHLAK</a>)
+</p>
 
 Introduction
 ------------
 
 LIFX Client is a LIFX API client library for PHP built with GuzzleHttp.
 
-#### Like this project?
-
-[![Join the community on Spectrum](https://img.shields.io/badge/Join_the_community-PHLAKNET-7a15fe.svg)](https://spectrum.chat/phlaknet)
-[![Become a Patron](https://img.shields.io/badge/Become_a-Patron-f96854.svg)](https://patreon.com/PHLAK)
-[![One-time Donation](https://img.shields.io/badge/Make_a-Donation-006bb6.svg)](https://paypal.me/ChrisKankiewicz)
+Refer to the full [LIFX API documentation](https://api.developer.lifx.com)
+for more information about each method and it's available parameters.
 
 Requirements
 ------------
@@ -144,7 +144,7 @@ A list of changes can be found on the [GitHub Releases](https://github.com/PHLAK
 Troubleshooting
 ---------------
 
-For general help and support join our [Spectrum community](https://spectrum.chat/phlaknet).
+For general help and support join our [Slack Workspace](https://join.slack.com/t/phlaknet/shared_invite/enQtNzk0ODkwMDA2MDg0LWI4NDAyZGRlMWEyMWNhZmJmZjgzM2Y2YTdhNmZlYzc3OGNjZWU5MDNkMTcwMWQ5OGI5ODFmMjI5OWVkZTliN2M).
 
 Please report bugs to the [GitHub Issue Tracker](https://github.com/PHLAK/lifx-client/issues).
 

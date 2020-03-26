@@ -20,8 +20,9 @@ class Client
      *
      * @param string $appToken LIFX OAuth2 access token. You can generate your
      *                         own token at https://cloud.lifx.com/settings
+     * @param array  $options  Array of Guzzle HTTP client options
      */
-    public function __construct($appToken, $options = [])
+    public function __construct(string $appToken, array $options = [])
     {
         $this->client = new GuzzleClient(array_merge_recursive([
             'base_uri' => self::BASE_URI . '/' . self::API_VERSION . '/',
@@ -238,7 +239,7 @@ class Client
     /**
      * Validate a color string.
      *
-     * @param string $color Color string to validate
+     * @param string $string Color string to validate
      *
      * @return object Decoded JSON object
      */

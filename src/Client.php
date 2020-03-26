@@ -6,7 +6,7 @@ use GuzzleHttp\Client as GuzzleClient;
 
 class Client
 {
-    /** @const BASE_URI LIFX API base URI */
+    /** @const LIFX API base URI */
     const BASE_URI = 'https://api.lifx.com';
 
     /** @const API_VERSION LIFX API version */

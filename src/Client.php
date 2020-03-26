@@ -40,7 +40,7 @@ class Client
      *
      * @return array Array of decoded JSON objects
      */
-    public function listLights($selector = 'all')
+    public function listLights(string $selector = 'all')
     {
         $response = $this->client->get('lights/' . $selector);
 
@@ -63,7 +63,7 @@ class Client
      *
      * @return array Array of decoded JSON objects
      */
-    public function setState($selector, array $params)
+    public function setState(string $selector, array $params)
     {
         $response = $this->client->put('lights/' . $selector . '/state', [
             'json' => $params
@@ -103,7 +103,7 @@ class Client
      *
      * @return object Decoded JSON object
      */
-    public function togglePower($selector, $duration = 1)
+    public function togglePower(string $selector, int $duration = 1)
     {
         $response = $this->client->post('lights/' . $selector . '/toggle', [
             'json' => [
@@ -137,7 +137,7 @@ class Client
      *
      * @return object Decoded JSON object
      */
-    public function breatheEffect($selector, $color, array $params = [])
+    public function breatheEffect(string $selector, string $color, array $params = [])
     {
         $response = $this->client->post('lights/' . $selector . '/effects/breathe', [
             'json' => array_merge($params, [
@@ -169,7 +169,7 @@ class Client
      *
      * @return object Decoded JSON object
      */
-    public function pulseEffect($selector, $color, array $params = [])
+    public function pulseEffect(string $selector, string $color, array $params = [])
     {
         $response = $this->client->post('lights/' . $selector . '/effects/pulse', [
             'json' => array_merge($params, [
@@ -195,7 +195,7 @@ class Client
      *
      * @return object Decoded JSON object
      */
-    public function cycle($selector, array $states, array $params = [])
+    public function cycle(string $selector, array $states, array $params = [])
     {
         $response = $this->client->post('lights/' . $selector . '/cycle', [
             'json' => array_merge($params, [
@@ -227,7 +227,7 @@ class Client
      *
      * @return object Decoded JSON object
      */
-    public function activateScene($sceneUuid, $duration = 1.0)
+    public function activateScene(string $sceneUuid, float $duration = 1.0)
     {
         $response = $this->client->put('scenes/scene_id:' . $sceneUuid . '/activate', [
             'json' => ['duration' => $duration]
@@ -243,7 +243,7 @@ class Client
      *
      * @return object Decoded JSON object
      */
-    public function validateColor($string)
+    public function validateColor(string $string)
     {
         $response = $this->client->get('color', [
             'query' => ['string' => $string]

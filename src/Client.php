@@ -7,10 +7,10 @@ use GuzzleHttp\Client as GuzzleClient;
 class Client
 {
     /** @const LIFX API base URI */
-    const BASE_URI = 'https://api.lifx.com';
+    public const BASE_URI = 'https://api.lifx.com';
 
     /** @const API_VERSION LIFX API version */
-    const API_VERSION = 'v1';
+    public const API_VERSION = 'v1';
 
     /** @var object Instance of GuzzleHttp\Client object */
     protected $client;
@@ -20,15 +20,15 @@ class Client
      *
      * @param string $appToken LIFX OAuth2 access token. You can generate your
      *                         own token at https://cloud.lifx.com/settings
-     * @param array  $options  Array of Guzzle HTTP client options
+     * @param array $options Array of Guzzle HTTP client options
      */
     public function __construct(string $appToken, array $options = [])
     {
         $this->client = new GuzzleClient(array_merge_recursive([
             'base_uri' => self::BASE_URI . '/' . self::API_VERSION . '/',
             'headers' => [
-                'Authorization' => 'Bearer ' . $appToken
-            ]
+                'Authorization' => 'Bearer ' . $appToken,
+            ],
         ], $options));
     }
 
@@ -52,21 +52,21 @@ class Client
      *
      * @param string $selector The selector to limit which lights are
      *                         controlled
-     * @param array  $params   Array of one or more parameters:
-     *                         - power (string): 'on' or 'off'
-     *                         - color (string): The color to set the light to
-     *                         - brightness (float): Brightness [0.0 - 1.0]
-     *                         - duration (float): Time in seconds the power
-     *                         action will take [0 - 3155760000] (default: 1.0)
-     *                         - infrared (float): The brightness of the
-     *                         infrared channel [0.0 - 1.0]
+     * @param array $params Array of one or more parameters:
+     *                      - power (string): 'on' or 'off'
+     *                      - color (string): The color to set the light to
+     *                      - brightness (float): Brightness [0.0 - 1.0]
+     *                      - duration (float): Time in seconds the power
+     *                      action will take [0 - 3155760000] (default: 1.0)
+     *                      - infrared (float): The brightness of the
+     *                      infrared channel [0.0 - 1.0]
      *
      * @return array Array of decoded JSON objects
      */
     public function setState(string $selector, array $params)
     {
         $response = $this->client->put('lights/' . $selector . '/state', [
-            'json' => $params
+            'json' => $params,
         ]);
 
         return json_decode($response->getBody());
@@ -75,8 +75,8 @@ class Client
     /**
      * Set multiple states across multiple selectors.
      *
-     * @param array $states   Array of state hashes as per Set State (no more
-     *                        than 50 entries)
+     * @param array $states Array of state hashes as per Set State (no more
+     *                      than 50 entries)
      * @param array $defaults Optional array of default values to use when not
      *                        specified in each states[] object
      *
@@ -87,8 +87,8 @@ class Client
         $response = $this->client->put('lights/states', [
             'json' => [
                 'states' => $states,
-                'defaults' => $defaults
-            ]
+                'defaults' => $defaults,
+            ],
         ]);
 
         return json_decode($response->getBody());
@@ -98,8 +98,8 @@ class Client
      * Toggle the power of one or more lights via a selector.
      *
      * @param string $selector The selector to limit which lights are toggled
-     * @param int    $duration Time in seconds to spend performing the toggle
-     *                         (default: 1)
+     * @param int $duration Time in seconds to spend performing the toggle
+     *                      (default: 1)
      *
      * @return object Decoded JSON object
      */
@@ -107,8 +107,8 @@ class Client
     {
         $response = $this->client->post('lights/' . $selector . '/toggle', [
             'json' => [
-                'duration' => $duration
-            ]
+                'duration' => $duration,
+            ],
         ]);
 
         return json_decode($response->getBody());
@@ -119,21 +119,21 @@ class Client
      *
      * @param string $selector The selector to limit which lights will run
      *                         the effect
-     * @param string $color    The color to use for the breathe effect
-     * @param array  $params   Array of optional parameters:
-     *                         - from_color (string): The color to start the
-     *                         effect from (default: current bulb color)
-     *                         - period (float): Time in seconds for one cycle
-     *                         of the effect (default: 1.0)
-     *                         - cycles (float): Number of times to repeat the
-     *                         effect (default: 1.0)
-     *                         - persist (bool): If false set the light back to
-     *                         its previous value when effect ends, if true
-     *                         leave the last effect color (default: false)
-     *                         - power_on (bool): If true, turn the bulb on
-     *                         if it is not already on (default: true)
-     *                         - peak (float): Where in a period the color is at
-     *                         its maximum [0.0 - 1.0] (default: 0.5)
+     * @param string $color The color to use for the breathe effect
+     * @param array $params Array of optional parameters:
+     *                      - from_color (string): The color to start the
+     *                      effect from (default: current bulb color)
+     *                      - period (float): Time in seconds for one cycle
+     *                      of the effect (default: 1.0)
+     *                      - cycles (float): Number of times to repeat the
+     *                      effect (default: 1.0)
+     *                      - persist (bool): If false set the light back to
+     *                      its previous value when effect ends, if true
+     *                      leave the last effect color (default: false)
+     *                      - power_on (bool): If true, turn the bulb on
+     *                      if it is not already on (default: true)
+     *                      - peak (float): Where in a period the color is at
+     *                      its maximum [0.0 - 1.0] (default: 0.5)
      *
      * @return object Decoded JSON object
      */
@@ -141,8 +141,8 @@ class Client
     {
         $response = $this->client->post('lights/' . $selector . '/effects/breathe', [
             'json' => array_merge($params, [
-                'color' => $color
-            ])
+                'color' => $color,
+            ]),
         ]);
 
         return json_decode($response->getBody());
@@ -153,19 +153,19 @@ class Client
      *
      * @param string $selector The selector to limit which lights will run
      *                         the effect
-     * @param string $color    The color to use for the pulse effect
-     * @param array  $params   Array of optional parameters:
-     *                         - from_color (string): The color to start the
-     *                         effect from (default: current bulb color)
-     *                         - period (float): Time in seconds for one cycle
-     *                         of the effect (default: 1.0)
-     *                         - cycles (float): Number of times to repeat the
-     *                         effect (default: 1.0)
-     *                         - persist (bool): If false set the light back to
-     *                         its previous value when effect ends, if true
-     *                         leave the last effect color (default: false)
-     *                         - power_on (bool): If true, turn the bulb on
-     *                         if it is not already on (default: true)
+     * @param string $color The color to use for the pulse effect
+     * @param array $params Array of optional parameters:
+     *                      - from_color (string): The color to start the
+     *                      effect from (default: current bulb color)
+     *                      - period (float): Time in seconds for one cycle
+     *                      of the effect (default: 1.0)
+     *                      - cycles (float): Number of times to repeat the
+     *                      effect (default: 1.0)
+     *                      - persist (bool): If false set the light back to
+     *                      its previous value when effect ends, if true
+     *                      leave the last effect color (default: false)
+     *                      - power_on (bool): If true, turn the bulb on
+     *                      if it is not already on (default: true)
      *
      * @return object Decoded JSON object
      */
@@ -173,8 +173,8 @@ class Client
     {
         $response = $this->client->post('lights/' . $selector . '/effects/pulse', [
             'json' => array_merge($params, [
-                'color' => $color
-            ])
+                'color' => $color,
+            ]),
         ]);
 
         return json_decode($response->getBody());
@@ -184,14 +184,14 @@ class Client
      * Make the light(s) cycle to the next or previous state in a list of states.
      *
      * @param string $selector Selector to limit which lights are controlled
-     * @param array  $states   Array of state hashes as per Set State (requires
-     *                         2 to 5 entries)
-     * @param array  $params   Array of optional parameters:
-     *                         - defaults (array): Default values to use when
-     *                         not specified in each states[] object
-     *                         - direction (string): Direction in which to cycle
-     *                         through the list. Can be 'forward' or 'backward'
-     *                         (default: forward)
+     * @param array $states Array of state hashes as per Set State (requires
+     *                      2 to 5 entries)
+     * @param array $params Array of optional parameters:
+     *                      - defaults (array): Default values to use when
+     *                      not specified in each states[] object
+     *                      - direction (string): Direction in which to cycle
+     *                      through the list. Can be 'forward' or 'backward'
+     *                      (default: forward)
      *
      * @return object Decoded JSON object
      */
@@ -199,8 +199,8 @@ class Client
     {
         $response = $this->client->post('lights/' . $selector . '/cycle', [
             'json' => array_merge($params, [
-                'states' => $states
-            ])
+                'states' => $states,
+            ]),
         ]);
 
         return json_decode($response->getBody());
@@ -222,15 +222,15 @@ class Client
      * Activate a scene.
      *
      * @param string $sceneUuid The UUID for the scene you wish to activate
-     * @param float  $duration  The time in seconds to spend performing the
-     *                          scene transition (default: 1.0)
+     * @param float $duration The time in seconds to spend performing the
+     *                        scene transition (default: 1.0)
      *
      * @return object Decoded JSON object
      */
     public function activateScene(string $sceneUuid, float $duration = 1.0)
     {
         $response = $this->client->put('scenes/scene_id:' . $sceneUuid . '/activate', [
-            'json' => ['duration' => $duration]
+            'json' => ['duration' => $duration],
         ]);
 
         return json_decode($response->getBody());
@@ -246,7 +246,7 @@ class Client
     public function validateColor(string $string)
     {
         $response = $this->client->get('color', [
-            'query' => ['string' => $string]
+            'query' => ['string' => $string],
         ]);
 
         return json_decode($response->getBody());

@@ -1,12 +1,12 @@
 <?php
 
-use PHLAK\LIFX;
-use PHPUnit\Framework\TestCase;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Response;
+use PHLAK\LIFX;
+use PHPUnit\Framework\TestCase;
 
 class ResoponseTest extends TestCase
 {
@@ -17,11 +17,11 @@ class ResoponseTest extends TestCase
         $mock = new MockHandler([
             new Response(200, [], '{"response": true}'),
             new Response(202, ['Content-Length' => 0]),
-            new RequestException('Error Communicating with Server', new Request('GET', 'test'))
+            new RequestException('Error Communicating with Server', new Request('GET', 'test')),
         ]);
 
         $this->lifx = new LIFX\Client('NOT_A_REAL_APP_TOKEN', [
-            'handler' => HandlerStack::create($mock)
+            'handler' => HandlerStack::create($mock),
         ]);
     }
 
@@ -47,18 +47,18 @@ class ResoponseTest extends TestCase
     {
         $this->assertTrue($this->lifx->setStates([
             ['selector' => 'id:123456789', 'power' => 'on'],
-            ['selector' => 'id:987654321', 'power' => 'on']
+            ['selector' => 'id:987654321', 'power' => 'on'],
         ])->response);
 
         $this->lifx->setStates([
             ['selector' => 'id:123456789', 'power' => 'on'],
-            ['selector' => 'id:987654321', 'power' => 'on']
+            ['selector' => 'id:987654321', 'power' => 'on'],
         ]);
 
         $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->setStates([
             ['selector' => 'id:123456789', 'power' => 'on'],
-            ['selector' => 'id:987654321', 'power' => 'on']
+            ['selector' => 'id:987654321', 'power' => 'on'],
         ]);
     }
 
@@ -93,18 +93,18 @@ class ResoponseTest extends TestCase
     {
         $this->assertTrue($this->lifx->cycle('id:123456789', [
             ['power' => 'on'],
-            ['power' => 'off']
+            ['power' => 'off'],
         ])->response);
 
         $this->assertNull($this->lifx->cycle('id:123456789', [
             ['power' => 'on'],
-            ['power' => 'off']
+            ['power' => 'off'],
         ]));
 
         $this->expectException('GuzzleHttp\Exception\RequestException');
         $this->lifx->cycle('id:123456789', [
             ['power' => 'on'],
-            ['power' => 'off']
+            ['power' => 'off'],
         ]);
     }
 

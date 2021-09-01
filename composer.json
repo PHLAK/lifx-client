@@ -18,7 +18,7 @@
     },
     "require-dev": {
         "php": ">=7.3",
-        "friendsofphp/php-cs-fixer": "^2.3",
+        "friendsofphp/php-cs-fixer": "^3.1",
         "phlak/coding-standards": "^1.1",
         "phpunit/phpunit": "^9.0",
         "psy/psysh": "^0.10",

@@ -21,7 +21,7 @@
         "friendsofphp/php-cs-fixer": "^2.3",
         "phlak/coding-standards": "^1.1",
         "phpunit/phpunit": "^9.0",
-        "psy/psysh": "^0.10",
+        "psy/psysh": "^0.11",
         "vimeo/psalm": "^4.0"
     },
     "autoload": {
